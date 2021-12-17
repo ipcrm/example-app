@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ -z $1 ]; then
   echo "SUPPLY JDK compatibility version in the form of 1.8, 1.11"
   exit 1

@@ -1,5 +1,19 @@
 # Example App for log4j2 testing purposes
 
+### Setup
+
+You will need to install:
+
+```
+docker
+docker-compose
+```
+
+If you want to run the resulting JAR files directly on your host, you will need to install JDK8 or JDK11 depending on
+what testing is to be performed. 
+
+> Note: Currently the project targets only those JDK versions
+
 ### Build
 
 You first need to build all the JAR files (if desired, test single versions see `Build JAR for single version`). 

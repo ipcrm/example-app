@@ -29,7 +29,7 @@ what testing is to be performed.
 You first need to build all the JAR files (if desired, test single versions see `Build JAR for single version`). 
 
 ```
-sh -x ./build/build.sh
+bash -x ./build/build.sh
 ```
 
 > NOTE: Customize for the versions you want to create
@@ -77,5 +77,5 @@ can be started with docker-compose via `docker-compose up log4j_1.8_2.15.0` (see
 versions).
 
 ```
-sh -x ./build/build_one.sh 1.8 2.15.0
+bash -x ./build/build_one.sh 1.8 2.15.0
 ```

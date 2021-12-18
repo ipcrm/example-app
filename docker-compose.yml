@@ -15,7 +15,6 @@ services:
     ports:
       - "8010:8080"
 
-
   log4j_1.11_2.15.0:
     build:
       context: ./
@@ -29,7 +28,6 @@ services:
     tty: true
     ports:
       - "8011:8080"
-
 
   log4j_1.8_2.14.1:
     build:
@@ -45,7 +43,6 @@ services:
     ports:
       - "8012:8080"
 
-
   log4j_1.11_2.14.1:
     build:
       context: ./
@@ -60,6 +57,33 @@ services:
     ports:
       - "8013:8080"
 
+  log4j_1.8_2.14.0:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.14.0"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8014:8080"
+
+  log4j_1.11_2.14.0:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.14.0"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8015:8080"
 
   log4j_1.8_2.13.1:
     build:
@@ -73,8 +97,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8014:8080"
-
+      - "8016:8080"
 
   log4j_1.11_2.13.1:
     build:
@@ -88,8 +111,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8015:8080"
-
+      - "8017:8080"
 
   log4j_1.8_2.12.1:
     build:
@@ -103,8 +125,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8016:8080"
-
+      - "8018:8080"
 
   log4j_1.11_2.12.1:
     build:
@@ -118,8 +139,35 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8017:8080"
+      - "8019:8080"
 
+  log4j_1.8_2.12.0:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.12.0"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8020:8080"
+
+  log4j_1.11_2.12.0:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.12.0"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8021:8080"
 
   log4j_1.8_2.11.2:
     build:
@@ -133,8 +181,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8018:8080"
-
+      - "8022:8080"
 
   log4j_1.11_2.11.2:
     build:
@@ -148,8 +195,63 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8019:8080"
+      - "8023:8080"
 
+  log4j_1.8_2.11.1:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.11.1"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8024:8080"
+
+  log4j_1.11_2.11.1:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.11.1"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8025:8080"
+
+  log4j_1.8_2.11.0:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.11.0"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8026:8080"
+
+  log4j_1.11_2.11.0:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.11.0"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8027:8080"
 
   log4j_1.8_2.10.0:
     build:
@@ -163,8 +265,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8020:8080"
-
+      - "8028:8080"
 
   log4j_1.11_2.10.0:
     build:
@@ -178,8 +279,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8021:8080"
-
+      - "8029:8080"
 
   log4j_1.8_2.9.1:
     build:
@@ -193,8 +293,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8022:8080"
-
+      - "8030:8080"
 
   log4j_1.11_2.9.1:
     build:
@@ -208,8 +307,35 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8023:8080"
+      - "8031:8080"
 
+  log4j_1.8_2.9.0:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.9.0"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8032:8080"
+
+  log4j_1.11_2.9.0:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.9.0"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8033:8080"
 
   log4j_1.8_2.8.2:
     build:
@@ -223,8 +349,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8024:8080"
-
+      - "8034:8080"
 
   log4j_1.11_2.8.2:
     build:
@@ -238,8 +363,63 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8025:8080"
+      - "8035:8080"
 
+  log4j_1.8_2.8.1:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.8.1"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8036:8080"
+
+  log4j_1.11_2.8.1:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.8.1"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8037:8080"
+
+  log4j_1.8_2.8:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.8"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8038:8080"
+
+  log4j_1.11_2.8:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.8"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8039:8080"
 
   log4j_1.8_2.7:
     build:
@@ -253,8 +433,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8026:8080"
-
+      - "8040:8080"
 
   log4j_1.11_2.7:
     build:
@@ -268,8 +447,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8027:8080"
-
+      - "8041:8080"
 
   log4j_1.8_2.6.2:
     build:
@@ -283,8 +461,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8028:8080"
-
+      - "8042:8080"
 
   log4j_1.11_2.6.2:
     build:
@@ -298,8 +475,63 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8029:8080"
+      - "8043:8080"
 
+  log4j_1.8_2.6.1:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.6.1"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8044:8080"
+
+  log4j_1.11_2.6.1:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.6.1"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8045:8080"
+
+  log4j_1.8_2.6:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.6"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8046:8080"
+
+  log4j_1.11_2.6:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.6"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8047:8080"
 
   log4j_1.8_2.5:
     build:
@@ -313,8 +545,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8030:8080"
-
+      - "8048:8080"
 
   log4j_1.11_2.5:
     build:
@@ -328,8 +559,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8031:8080"
-
+      - "8049:8080"
 
   log4j_1.8_2.4.1:
     build:
@@ -343,8 +573,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8032:8080"
-
+      - "8050:8080"
 
   log4j_1.11_2.4.1:
     build:
@@ -358,8 +587,35 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8033:8080"
+      - "8051:8080"
 
+  log4j_1.8_2.4:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.4"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8052:8080"
+
+  log4j_1.11_2.4:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.4"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8053:8080"
 
   log4j_1.8_2.3:
     build:
@@ -373,8 +629,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8034:8080"
-
+      - "8054:8080"
 
   log4j_1.11_2.3:
     build:
@@ -388,8 +643,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8035:8080"
-
+      - "8055:8080"
 
   log4j_1.8_2.2:
     build:
@@ -403,8 +657,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8036:8080"
-
+      - "8056:8080"
 
   log4j_1.11_2.2:
     build:
@@ -418,8 +671,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8037:8080"
-
+      - "8057:8080"
 
   log4j_1.8_2.1:
     build:
@@ -433,8 +685,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8038:8080"
-
+      - "8058:8080"
 
   log4j_1.11_2.1:
     build:
@@ -448,8 +699,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8039:8080"
-
+      - "8059:8080"
 
   log4j_1.8_2.0.2:
     build:
@@ -463,8 +713,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8040:8080"
-
+      - "8060:8080"
 
   log4j_1.11_2.0.2:
     build:
@@ -478,8 +727,63 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8041:8080"
+      - "8061:8080"
 
+  log4j_1.8_2.0.1:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.0.1"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8062:8080"
+
+  log4j_1.11_2.0.1:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.0.1"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8063:8080"
+
+  log4j_1.8_2.0:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.0"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8064:8080"
+
+  log4j_1.11_2.0:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.0"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8065:8080"
 
   log4j_1.8_2.0-rc2:
     build:
@@ -493,8 +797,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8042:8080"
-
+      - "8066:8080"
 
   log4j_1.11_2.0-rc2:
     build:
@@ -508,8 +811,35 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8043:8080"
+      - "8067:8080"
 
+  log4j_1.8_2.0-rc1:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.0-rc1"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8068:8080"
+
+  log4j_1.11_2.0-rc1:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.0-rc1"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8069:8080"
 
   log4j_1.8_2.0-beta9:
     build:
@@ -523,8 +853,7 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8044:8080"
-
+      - "8070:8080"
 
   log4j_1.11_2.0-beta9:
     build:
@@ -538,4 +867,214 @@ services:
       - .:/root
     tty: true
     ports:
-      - "8045:8080"
+      - "8071:8080"
+
+  log4j_1.8_2.0-beta8:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.0-beta8"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8072:8080"
+
+  log4j_1.11_2.0-beta8:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.0-beta8"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8073:8080"
+
+  log4j_1.8_2.0-beta7:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.0-beta7"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8074:8080"
+
+  log4j_1.11_2.0-beta7:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.0-beta7"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8075:8080"
+
+  log4j_1.8_2.0-beta6:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.0-beta6"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8076:8080"
+
+  log4j_1.11_2.0-beta6:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.0-beta6"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8077:8080"
+
+  log4j_1.8_2.0-beta5:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.0-beta5"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8078:8080"
+
+  log4j_1.8_2.0-beta4:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.0-beta4"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8079:8080"
+
+  log4j_1.11_2.0-beta4:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.0-beta4"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8080:8080"
+
+  log4j_1.8_2.0-beta3:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.0-beta3"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8081:8080"
+
+  log4j_1.11_2.0-beta3:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.0-beta3"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8082:8080"
+
+  log4j_1.8_2.0-beta2:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.0-beta2"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8083:8080"
+
+  log4j_1.11_2.0-beta2:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.0-beta2"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8084:8080"
+
+  log4j_1.8_2.0-alpha2:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.8"
+        LOG4J_VERSION: "2.0-alpha2"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8085:8080"
+
+  log4j_1.11_2.0-alpha2:
+    build:
+      context: ./
+      dockerfile: build/Dockerfile11.app
+      args:
+        SOURCE_COMPAT: "1.11"
+        LOG4J_VERSION: "2.0-alpha2"
+    stdin_open: true
+    volumes:
+      - .:/root
+    tty: true
+    ports:
+      - "8086:8080"

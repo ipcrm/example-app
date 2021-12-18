@@ -16,6 +16,16 @@ what testing is to be performed.
 
 ### Build
 
+
+> NOTE on versions:
+> 
+> There is a huge number of combinations of JVM version and Log4j versions.  By default, the build scripts and the
+> docker-compose setup uses a subset of these combinations.  The subset is JVM 8/11 and Log4j vulnerable versions, but
+> the last Z for each minor (i.e., 2.15.0, 2.14.1, 2.13.1, etc).
+>
+> If you want to build and run ALL the versions use the `build-all.sh` and `docker-compose-all.yml` files in place of the
+> build.sh and docker-compose.yml files mentioned in the details below.
+
 You first need to build all the JAR files (if desired, test single versions see `Build JAR for single version`). 
 
 ```
@@ -47,7 +57,7 @@ PORT=8080 java -jar <jar> # You must set the PORT or it will error!
 Running inside of a docker container (see docker-compose.yml for additional info)
 
 ```
-docker-compose up [image]
+docker-compose [-f docker-compose.yml] up [image]
 ```
 
 

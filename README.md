@@ -23,7 +23,7 @@ what testing is to be performed.
 > docker-compose setup uses a subset of these combinations.  The subset is JVM 8/11 and Log4j vulnerable versions, but
 > the last Z for each minor (i.e., 2.15.0, 2.14.1, 2.13.1, etc).
 >
-> If you want to build and run ALL the versions use the `build-all.sh` and `docker-compose-all.yml` files in place of the
+> If you want to build and run ALL the versions use the `build_all.sh` and `docker-compose-all.yml` files in place of the
 > build.sh and docker-compose.yml files mentioned in the details below.
 
 You first need to build all the JAR files (if desired, test single versions see `Build JAR for single version`). 

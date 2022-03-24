@@ -38,7 +38,7 @@ exampleapp:
             dst: app_url
             format: "http://{{ index . \"exampleapp\" }}"
       source:
-        location: /Users/matthewcadorette/git/example-app/k8s/deploy.yml
+        location: "https://raw.githubusercontent.com/ipcrm/example-app/main/k8s/deploy.yml"
         templates:
           - "deploy.yml"
       args:
@@ -57,7 +57,7 @@ exampleapp:
     - name: setup-utility-curl
       extension: Ansible
       source:
-        location: /Users/matthewcadorette/git/example-app/ansible
+        location: "git+https://github.com/ipcrm/example-app.git"
         subdir: "deploy/ansible"
       tags: application
       needs:

@@ -28,7 +28,7 @@ public class App {
     static class MyHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange t) throws IOException {
-            String response = "This is the response";
+            String response = "Hello world!";
             String header = t.getRequestHeaders().getFirst("User-Agent");
             logger.info(header);
             t.sendResponseHeaders(200, response.length());

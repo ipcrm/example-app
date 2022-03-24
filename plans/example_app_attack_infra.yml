@@ -1,0 +1,86 @@
+---
+exampleapp:
+  needs:
+    - kubernetes
+  steps:
+    - name: utility-vpc
+      description: Create a new AWS Virtual Private Cloud (VPC) for the quickstart app to reside in
+      extension: VPC.AWS
+      tags: infrastructure
+      args:
+        name: utility-vpc
+    - name: utility-ec2
+      description: Create a new Ubuntu AWS EC2 instance that will host the quickstart application
+      extension: EC2Instance
+      tags: infrastructure
+      needs:
+        - utility-vpc
+      args:
+        vpc_id: !lookup /utility-vpc/outputs/vpc_id
+        subnet: !lookup /utility-vpc/outputs/subnet_id1
+        instance_name: utility-ec2
+        ports: "22,1389,8888"
+    - name: exampleapp
+      extension: Kubectl
+      needs:
+        - utility-ec2
+      helpers:
+        - helper: WriteValue
+          run_on_dryrun: true
+          args:
+            name: kubectl_config
+            dstfile: kubectl
+        - helper: GenerateOutput
+          run_on_dryrun: true
+          lifecycle:
+            - afterCreate
+          args:
+            dst: app_url
+            format: "http://{{ index . \"exampleapp\" }}"
+      source:
+        location: /Users/matthewcadorette/git/example-app/k8s/deploy.yml
+        templates:
+          - "deploy.yml"
+      args:
+        control_plane_url: !lookup /kubernetes/k8s/outputs/cluster_endpoint
+        kubectl_config: !lookupSecret /kubernetes/k8s/outputs/kubectl_config
+        kubectl_config_file: kubectl
+        kube_manifest_path: deploy.yml
+        replicas: 2
+        cidr_block:
+          - !lookup /utility-ec2/outputs/ip
+          - "${DETC_MY_IP}"
+        wait_for:
+           ticketing_app_url:
+              app_name: "exampleapp"
+              field: "load_balancer_ip"
+    - name: setup-utility-curl
+      extension: Ansible
+      source:
+        location: /Users/matthewcadorette/git/example-app/ansible
+        subdir: "deploy/ansible"
+      tags: application
+      needs:
+        - exampleapp
+      helpers:
+        - helper: ServiceAvailable # Ensure deployed ec2 instance is running and available on port 22
+          args:
+            hostname: !lookup /utility-ec2/outputs/ip
+            port: 22
+        - helper: WriteValue # Write out the pem file created for ec2 instance
+          run_on_dryrun: true
+          args:
+            raw_value: !lookupSecret /utility-ec2/outputs/pem
+            dstfile: instance.pem
+            mode: 0600
+      args:
+        inventory: !lookup /utility-ec2/outputs/ip
+        private_key: instance.pem
+        user: "ubuntu"
+        playbook: utility.yml
+        extra_vars:
+          inventory: !lookup /utility-ec2/outputs/ip
+          url: !lookup /exampleapp/outputs/app_url
+        privilege_escalation:
+          become: true
+

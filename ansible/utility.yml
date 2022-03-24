@@ -1,0 +1,24 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: write script
+    template:
+      src: curl_it.j2
+      dest: /usr/share/curl_it.sh
+      mode: 0755
+  - name: run the curl
+    ansible.builtin.cron:
+      user: ubuntu
+      name: "curl app"
+      minute: "*"
+      job: "/usr/share/curl_it.sh"
+  - name: jre
+    apt:
+      update_cache: yes
+      name: openjdk-8-jre-headless
+      state: present
+  - name: Copy source file
+    ansible.builtin.template:
+      src: run_exploit_infra.sh
+      dest: run_exploit_infra.sh
+

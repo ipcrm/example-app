@@ -1,0 +1,49 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exampleapp
+  labels:
+    app: exampleapp
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: exampleapp
+  template:
+    metadata:
+      labels:
+        app: exampleapp
+    spec:
+      containers:
+      - name: exampleapp
+        image: ipcrm/example-app:8-latest
+        imagePullPolicy: Always
+        env:
+        - name: PORT
+          value: "8080"
+        ports:
+        - containerPort: 8080
+          name: exampleapp
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: exampleapp
+  labels:
+    apps: exampleapp
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: '*'
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: 'tcp'
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+    - name: exampleapp
+      port: 8888
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: exampleapp
+  loadBalancerSourceRanges: [ {{range  $i, $e := .cidr_block }}{{if ne . ""}}{{if $i}},{{end}}{{$e}}/32{{end}}{{end}} ]

@@ -31,5 +31,6 @@ resource "google_compute_firewall" "enable-utility-ports" {
     ports    = ["1389"]
   }
 
+  target_tags   = ["utility"]
   source_ranges = ["0.0.0.0/0"]
 }

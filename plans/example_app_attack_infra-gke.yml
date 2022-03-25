@@ -10,6 +10,7 @@ exampleapp:
         region: !secret gcp.region
         project: !secret gcp.project_id
         instance_name: "utility"
+        tags: "utility"
     - name: utilty-firewall
       extension: Terraform
       source:

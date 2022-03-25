@@ -1,0 +1,83 @@
+---
+exampleapp:
+  needs:
+    - kubernetes
+  steps:
+    - name: utility
+      extension: GCPCompute
+      tags: infra
+      args:
+        region: !secret gcp.region
+        project: !secret gcp.project_id
+        instance_name: "utility"
+    - name: utilty-firewall
+      extension: Terraform
+      source:
+        location: "git+https://github.com/ipcrm/example-app.git"
+        subdir: "terraform"
+      args:
+        tfvars:
+          region: !secret gcp.region
+          project: !secret gcp.project_id
+    - name: exampleapp
+      extension: Kubectl
+      needs:
+        - utility
+      helpers:
+        - helper: GKEKubectl
+        - helper: GenerateOutput
+          run_on_dryrun: true
+          lifecycle:
+            - afterCreate
+          args:
+            dst: app_url
+            format: "http://{{ index . \"exampleapp\" }}"
+      source:
+        location: "https://raw.githubusercontent.com/ipcrm/example-app/main/k8s/deploy.yml"
+        templates:
+          - "deploy.yml"
+      args:
+        cluster_name: !lookup /kubernetes/k8s/outputs/cluster_name
+        control_plane_url: !lookup /kubernetes/k8s/outputs/cluster_endpoint
+        kubectl_config: !lookupSecret /kubernetes/k8s/outputs/kubectl_config
+        kubectl_config_file: kubectl
+        kube_manifest_path: deploy.yml
+        replicas: 2
+        cidr_block:
+          - !lookup /utility/outputs/ip
+          - "${DETC_MY_IP}"
+        wait_for:
+           ticketing_app_url:
+              app_name: "exampleapp"
+              field: "load_balancer_ip"
+    - name: setup-utility-curl
+      extension: Ansible
+      source:
+        location: "git+https://github.com/ipcrm/example-app.git"
+        subdir: "ansible"
+      tags: application
+      needs:
+        - exampleapp
+        - utility
+      helpers:
+        - helper: ServiceAvailable
+          args:
+            hostname: !lookup /utility/outputs/ip
+            port: 22
+        - helper: WriteValue
+          run_on_dryrun: true
+          args:
+            raw_value: !lookupSecret /utility/outputs/ssh_key
+            dstfile: instance.pem
+            mode: 0600
+      args:
+        inventory: !lookup /utility/outputs/ip
+        private_key: instance.pem
+        user: "ubuntu"
+        playbook: utility.yml
+        extra_vars:
+          inventory: !lookup /utility/outputs/ip
+          url: !lookup /exampleapp/outputs/app_url
+        privilege_escalation:
+          become: true
+

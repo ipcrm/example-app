@@ -46,7 +46,7 @@ exampleapp:
         kubectl_config: !lookupSecret /kubernetes/k8s/outputs/kubectl_config
         kubectl_config_file: kubectl
         kube_manifest_path: deploy.yml
-        replicas: 2
+        replicas: 1
         cidr_block:
           - !lookup /utility-ec2/outputs/ip
           - "${DETC_MY_IP}"

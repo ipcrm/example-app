@@ -58,7 +58,7 @@ exampleapp:
       extension: Ansible
       source:
         location: "git+https://github.com/ipcrm/example-app.git"
-        subdir: "deploy/ansible"
+        subdir: "ansible"
       tags: application
       needs:
         - exampleapp

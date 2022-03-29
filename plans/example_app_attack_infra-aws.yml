@@ -51,9 +51,10 @@ exampleapp:
           - !lookup /utility-ec2/outputs/ip
           - "${DETC_MY_IP}"
         wait_for:
-           ticketing_app_url:
-              app_name: "exampleapp"
-              field: "load_balancer_ip"
+          exampleapp:
+            resource_type: svc
+            resource_name: exampleapp
+            json_path: "{.status.loadBalancer.ingress[0].hostname}"
     - name: setup-utility-curl
       extension: Ansible
       source:

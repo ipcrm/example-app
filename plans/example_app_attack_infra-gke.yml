@@ -1,7 +1,7 @@
 ---
 exampleapp:
   needs:
-    - kubernetes
+    - gcp-k8s
   steps:
     - name: utility
       extension: GCPCompute
@@ -38,9 +38,9 @@ exampleapp:
         templates:
           - "deploy.yml"
       args:
-        cluster_name: !lookup /kubernetes/k8s/outputs/cluster_name
-        control_plane_url: !lookup /kubernetes/k8s/outputs/cluster_endpoint
-        kubectl_config: !lookupSecret /kubernetes/k8s/outputs/kubectl_config
+        cluster_name: !lookup /gcp-k8s/k8s/outputs/cluster_name
+        control_plane_url: !lookup /gcp-k8s/k8s/outputs/cluster_endpoint
+        kubectl_config: !lookupSecret /gcp-k8s/k8s/outputs/kubectl_config
         kubectl_config_file: kubectl
         kube_manifest_path: deploy.yml
         replicas: 1

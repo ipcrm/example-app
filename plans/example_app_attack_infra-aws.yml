@@ -1,7 +1,7 @@
 ---
 exampleapp:
   needs:
-    - kubernetes
+    - aws-k8s
   steps:
     - name: utility-vpc
       description: Create a new AWS Virtual Private Cloud (VPC) for the quickstart app to reside in
@@ -42,8 +42,8 @@ exampleapp:
         templates:
           - "deploy.yml"
       args:
-        control_plane_url: !lookup /kubernetes/k8s/outputs/cluster_endpoint
-        kubectl_config: !lookupSecret /kubernetes/k8s/outputs/kubectl_config
+        control_plane_url: !lookup /aws-k8s/k8s/outputs/cluster_endpoint
+        kubectl_config: !lookupSecret /aws-k8s/k8s/outputs/kubectl_config
         kubectl_config_file: kubectl
         kube_manifest_path: deploy.yml
         replicas: 1

@@ -55,7 +55,7 @@ exampleapp:
             resource_type: svc
             resource_name: exampleapp
             json_path: "{.status.loadBalancer.ingress[0].hostname}"
-    - name: setup-utility-curl
+    - name: setup-utility-curl-machine
       extension: Ansible
       source:
         location: "git+https://github.com/ipcrm/example-app.git"
